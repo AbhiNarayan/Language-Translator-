@@ -1,0 +1,12 @@
+from googletrans import Translator
+from languages import *
+import streamlit as st
+
+st.title('Language processing app')
+source_text= st.text_input('enter text to translate')
+target_language = st.selectbox('select your target language',options=languages)
+translate = st.button('Translate')
+if translate :
+    translator = Translator()
+    out = translator.translate(source_text,dest=target_language)
+    st.text_area(label="output data ",value = out.text)
